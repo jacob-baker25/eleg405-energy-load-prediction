@@ -22,8 +22,17 @@ How do regression-model complexity and the amount of available architectural inf
 Create and activate a virtual environment:
 
 ```bash
-python -m venv .
+python -m venv .venv
+```
 
-then:
+Then activate it in PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Install the project requirements:
+
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+```
