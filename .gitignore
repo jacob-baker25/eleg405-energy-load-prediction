@@ -220,3 +220,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local project planning reference
+ELEG405_Revised_Project_Plan.md
