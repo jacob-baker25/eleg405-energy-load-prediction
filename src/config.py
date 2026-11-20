@@ -11,6 +11,10 @@ FEATURE_COUNTS = [2, 4, 6, 8]
 RIDGE_ALPHAS = [0.01, 0.1, 1, 10, 100]
 INNER_CV_FOLDS = 3
 
+# Fast fits take only a few milliseconds, so each timing is repeated and the
+# median is kept to reduce noise from other activity on the computer.
+TIMING_REPEATS = 20
+
 FEATURE_COLUMNS = [
     "relative_compactness",
     "surface_area",
