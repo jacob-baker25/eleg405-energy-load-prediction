@@ -2,7 +2,7 @@ from time import perf_counter
 
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import KFold
+from sklearn.model_selection import GroupKFold, KFold
 
 from .config import N_FOLDS, CV_SEED, TIMING_REPEATS
 
@@ -37,9 +37,24 @@ def regression_metrics(y_true, y_pred) -> dict[str, float]:
         "r2": r2_score(y_true, y_pred),
     }
 
-def get_cv():
+def get_cv(seed=CV_SEED):
+    """Shuffled K-fold splitter. The default seed gives the shared project folds."""
     return KFold(
-    n_splits=N_FOLDS,
-    shuffle=True,
-    random_state=CV_SEED
+        n_splits=N_FOLDS,
+        shuffle=True,
+        random_state=seed,
+    )
+
+
+def get_group_cv(seed=CV_SEED):
+    """Shuffled K-fold splitter that keeps each group in a single fold.
+
+    Use with src.data.make_design_groups so the four orientation copies of a
+    building design never appear in both training and validation:
+        get_group_cv(seed).split(X, groups=groups)
+    """
+    return GroupKFold(
+        n_splits=N_FOLDS,
+        shuffle=True,
+        random_state=seed,
     )

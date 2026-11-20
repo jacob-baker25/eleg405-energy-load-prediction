@@ -5,6 +5,10 @@ N_FOLDS = 5
 CV_SEED = 42
 MI_SEED = 42
 
+# Shuffle seeds for repeated cross-validation (data-partition variability).
+# Each seed gives a different assignment of development rows to the 5 folds.
+REPEAT_CV_SEEDS = [0, 1, 2, 3, 4]
+
 RF_SEEDS = [0, 1, 2, 3, 4]
 
 FEATURE_COUNTS = [2, 4, 6, 8]
