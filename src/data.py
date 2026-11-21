@@ -38,6 +38,17 @@ def load_data() -> pd.DataFrame:
     return df
 
 
+def make_design_groups(X: pd.DataFrame) -> pd.Series:
+    """Label each row with its building design (every feature except orientation).
+
+    The dataset simulates each design at four orientations whose loads are
+    nearly identical. Rows with the same label are near-duplicates and should
+    stay in the same cross-validation fold when a leakage-free estimate is needed.
+    """
+    design_columns = [c for c in FEATURE_COLUMNS if c != "orientation"]
+    return X[design_columns].astype(str).agg("|".join, axis=1)
+
+
 def create_dev_test_split(
     df: pd.DataFrame,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:

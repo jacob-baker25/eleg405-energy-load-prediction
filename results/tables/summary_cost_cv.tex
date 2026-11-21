@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Mean computational cost per cross-validation fit (milliseconds).}
+\label{tab:cv_cost}
+\begin{tabular}{llllllll}
+\toprule
+Model & Selection & Features & Training (ms) & Selection (ms) & Tuning (ms) & Total fit (ms) & Prediction (ms) \\
+\midrule
+Linear & all & 8 & 2.1 & 0.0 & 0.0 & 2.1 & 0.8 \\
+Linear & forward & 6 & 3.4 & 597.7 & 0.0 & 601.1 & 1.7 \\
+Linear & forward & 4 & 3.5 & 512.7 & 0.0 & 516.2 & 1.5 \\
+Linear & forward & 2 & 3.8 & 362.3 & 0.0 & 366.1 & 1.4 \\
+Linear & MI & 6 & 2.0 & 42.2 & 0.0 & 44.2 & 0.8 \\
+Linear & MI & 4 & 1.8 & 36.5 & 0.0 & 38.2 & 0.7 \\
+Linear & MI & 2 & 1.8 & 38.0 & 0.0 & 39.8 & 0.7 \\
+Ridge & all & 8 & 7.7 & 0.0 & 242.4 & 250.2 & 2.5 \\
+Ridge & MI & 6 & 8.6 & 69.0 & 1114.4 & 1191.9 & 2.4 \\
+Ridge & MI & 4 & 5.8 & 59.4 & 990.0 & 1055.1 & 1.8 \\
+Ridge & MI & 2 & 6.4 & 59.7 & 973.6 & 1039.8 & 1.8 \\
+Random forest & all & 8 & 206.6 & 0.0 & 0.0 & 206.6 & 62.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

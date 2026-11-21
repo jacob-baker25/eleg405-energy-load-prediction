@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Five-fold cross-validation accuracy on the development set (mean $\pm$ std).}
+\label{tab:cv_accuracy}
+\begin{tabular}{lllllll}
+\toprule
+Model & Selection & Features & Heating RMSE & Heating R$^2$ & Cooling RMSE & Cooling R$^2$ \\
+\midrule
+Linear & all & 8 & 2.92 $\pm$ 0.18 & 0.915 $\pm$ 0.012 & 3.22 $\pm$ 0.20 & 0.883 $\pm$ 0.013 \\
+Linear & forward & 6 & 2.91 $\pm$ 0.18 & 0.915 $\pm$ 0.013 & 3.21 $\pm$ 0.20 & 0.884 $\pm$ 0.013 \\
+Linear & forward & 4 & 2.98 $\pm$ 0.15 & 0.911 $\pm$ 0.012 & 3.24 $\pm$ 0.20 & 0.882 $\pm$ 0.013 \\
+Linear & forward & 2 & 3.70 $\pm$ 0.19 & 0.862 $\pm$ 0.018 & 3.74 $\pm$ 0.23 & 0.842 $\pm$ 0.020 \\
+Linear & MI & 6 & 2.93 $\pm$ 0.18 & 0.914 $\pm$ 0.013 & 3.21 $\pm$ 0.20 & 0.884 $\pm$ 0.013 \\
+Linear & MI & 4 & 4.21 $\pm$ 0.19 & 0.822 $\pm$ 0.024 & 3.97 $\pm$ 0.14 & 0.822 $\pm$ 0.013 \\
+Linear & MI & 2 & 7.15 $\pm$ 0.18 & 0.488 $\pm$ 0.047 & 6.54 $\pm$ 0.06 & 0.518 $\pm$ 0.039 \\
+Ridge & all & 8 & 2.92 $\pm$ 0.18 & 0.915 $\pm$ 0.012 & 3.22 $\pm$ 0.20 & 0.883 $\pm$ 0.013 \\
+Ridge & MI & 6 & 2.93 $\pm$ 0.18 & 0.914 $\pm$ 0.013 & 3.21 $\pm$ 0.20 & 0.884 $\pm$ 0.013 \\
+Ridge & MI & 4 & 4.21 $\pm$ 0.19 & 0.822 $\pm$ 0.024 & 3.97 $\pm$ 0.15 & 0.822 $\pm$ 0.013 \\
+Ridge & MI & 2 & 7.15 $\pm$ 0.18 & 0.489 $\pm$ 0.046 & 6.53 $\pm$ 0.06 & 0.518 $\pm$ 0.039 \\
+Random forest & all & 8 & 0.52 $\pm$ 0.03 & 0.997 $\pm$ 0.000 & 1.72 $\pm$ 0.17 & 0.967 $\pm$ 0.005 \\
+\bottomrule
+\end{tabular}
+\end{table}
