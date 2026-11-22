@@ -105,3 +105,70 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/05_linear_diagnost
 ```
 
 Figures are saved to `results/figures/`. LaTeX versions of the summary tables are saved as `.tex` files in `results/tables/`.
+
+
+## Checkpoint 2 — Experimental Results and Analysis
+
+Checkpoint 2 expands the initial model comparisons with feature ablation, hyperparameter tuning, computational performance measurements, and error analysis. All experiments use the development set for cross-validation, while the held-out test set remains unused during model selection.
+
+### Random Forest Experiments
+
+The Random Forest experiments are implemented in `notebooks/03_random_forest_nate.ipynb`.
+
+- **Baseline:** 100-tree Random Forest evaluated across five cross-validation folds and five random seeds.
+- **Feature Ablation:** Compared 2, 4, 6, and 8 input features using fixed-order and mutual-information feature selection.
+- **Hyperparameter Tuning:** Evaluated 12 configurations per target using different numbers of trees, maximum depths, and minimum leaf sizes.
+- **Model Comparison:** Compared Random Forest with Linear Regression and Ridge Regression.
+- **Computational Performance:** Recorded model training and prediction times.
+- **Failure Analysis:** Examined prediction errors across heating- and cooling-load quartiles.
+
+### Principal Results
+
+Random Forest achieved the lowest cross-validation prediction errors among the three models.
+
+| Model | Heating RMSE | Cooling RMSE |
+|---|---:|---:|
+| Linear Regression | 2.9158 | 3.2131 |
+| Ridge Regression | 2.9157 | 3.2134 |
+| Random Forest | 0.4903 | 1.6914 |
+
+These values represent the lowest mean validation RMSE for each model across the tested feature counts. Random Forest performed best using six mutual-information-selected features.
+
+Hyperparameter tuning selected 200-tree configurations, with validation RMSE values of 0.5152 for heating and 1.7106 for cooling using eight features and one fixed model seed.
+
+Random Forest required more training time than the simpler regression models but achieved substantially lower prediction error.
+
+### Checkpoint 2 Output Files
+
+**Results Tables:** `results/tables/`
+
+- `random_forest_mi_ablation_cv.csv`
+- `random_forest_mi_ablation_summary.csv`
+- `random_forest_tuning_cv.csv`
+- `random_forest_tuning_summary.csv`
+- `random_forest_best_configs.csv`
+- `checkpoint2_model_comparison.csv`
+- `checkpoint2_timing_comparison.csv`
+- `checkpoint2_rf_error_by_range.csv`
+
+**Results Figures:** `results/figures/`
+
+- `checkpoint2_heating_load_comparison.png`
+- `checkpoint2_cooling_load_comparison.png`
+- `checkpoint2_heating_load_training_time.png`
+- `checkpoint2_cooling_load_training_time.png`
+- `checkpoint2_heating_load_error_analysis.png`
+- `checkpoint2_cooling_load_error_analysis.png`
+
+### Reproducing Checkpoint 2 Results
+
+1. Install dependencies using `pip install -r requirements.txt`.
+2. Run `notebooks/03_random_forest_nate.ipynb`.
+3. Run `notebooks/06_results_summary.ipynb` to regenerate combined results.
+4. Review the generated CSV files and figures in the `results/` directory.
+
+Random Forest timing uses wall-clock measurements, while some Linear Regression and Ridge Regression timings use repeated measurements. Feature-selection and tuning costs should be considered separately.
+
+### Remaining Work
+
+Before the final IEEE paper, the remaining work includes verifying reproducibility from a clean environment, completing additional robustness comparisons if needed, and evaluating the held-out test set after the model configurations have been fixed.
